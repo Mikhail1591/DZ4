@@ -1,0 +1,17 @@
+# Service
+kind: Service
+apiVersion: v1
+metadata:
+  name: redsrv
+    labels:
+    app: redmine
+spec:
+  selector:
+    app: redmine
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  type: ClusterIP
+  
