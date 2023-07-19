@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: postgrs  
 spec:
-  replicas: 1ostgr
+  replicas: 1
   selector:
     matchLabels:
       app: postgres
