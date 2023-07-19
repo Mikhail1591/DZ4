@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redmine    
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redmine
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: redmine
+    spec:      
+      containers:
+      - image: redmine:4.1.1
+        name: redmine
+        ports:
+          - containerPort: 3000
+        envFrom:
+          configMap:
+            name: redmine_map
+          secret:
+            name: secret_redm
